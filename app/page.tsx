@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Hello from "../components/hello";
-import Fetchapi from "../components/fetch";
 
 export default function Home() {
   console.log("what am i -- Seever")
@@ -8,8 +6,6 @@ export default function Home() {
   return (
     <>
       <h1 className="text-3xl">Welcome to Next.js</h1>
-      <Hello/>
-      <Fetchapi/>
     </>
     
   );
