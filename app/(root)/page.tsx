@@ -1,24 +1,15 @@
 import SearchForm from "@/components/SearchForm"
 import StartupCard from "@/components/StartupCard";
+import { STARTUP_QUERY } from "@/lib/queries";
+import { client } from "@/sanity/lib/client";
 
 export default async function Home( { searchParams }: {
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
 
-  const posts = [{
-    _createdAT: new Date(),
-    views: 55,
-    author: {
-      _id: 1,
-      name: "Greg"
-    },
-    _id: 1,
-    description: "this is a description",
-    image: "https://cards.deckstats.net/picture.php?utf8=1&lng=en&card=Y%27shtola%2C+Night%27s+Blessed&set=FIC&collector_number=215&language_code=en",
-    category: "Cards",
-    title: "MTG cards"
-  }]
+  const posts = await client.fetch(STARTUP_QUERY);
+  console.log(JSON.stringify(posts, null, 2))
 
   return (
     <>
