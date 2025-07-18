@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useActionState } from 'react'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import MDEditor from "@uiw/react-md-editor";
@@ -12,7 +12,14 @@ const StartupForm = () => {
     const [errors, setErrors]=useState<Record<string, string>>({})
     const [pitch, setPitch] = React.useState("");
 
-    const isPending = false
+    const handleFormSubmit = () => {};
+    const [state, formAction, isPending] = useActionState(handleFormSubmit, {
+        error: "",
+        status: "INITIAL"
+    });
+
+ 
+
 
     return (
         <form action={()=> {}} className='startup-form'>
