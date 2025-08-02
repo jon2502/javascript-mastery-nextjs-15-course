@@ -21,7 +21,6 @@ const StartupForm = () => {
 
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
         try {
-            console.log("run")
             const formValues = {
                 title: formData.get("title") as string,
                 description: formData.get("description") as string,
@@ -31,7 +30,6 @@ const StartupForm = () => {
             }
             await formSchema.parseAsync(formValues)
             const result = await createPitch(prevState, formData ,pitch)
-            console.log(result)
             if(result.status == 'SUCCESS'){
                 toast("SUCCESS",{
                     description: "Your startup pitch has been created successfully",
